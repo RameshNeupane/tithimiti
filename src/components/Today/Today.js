@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./Today.css";
 
 const Today = () => {
-  const today = new Date();
-  const [year, setYear] = useState(today.getFullYear());
+  // const today = new Date();
+  const [year, setYear] = useState();
 
   const monthList = [
     "January",
@@ -19,9 +19,9 @@ const Today = () => {
     "November",
     "December",
   ];
-  const numMonth = today.getMonth();
-  const [strMonth, setStrMonth] = useState(monthList[numMonth]);
-  const [dayOfMonth, setDayOfMonth] = useState(today.getDate());
+  // const numMonth = today.getMonth();
+  const [strMonth, setStrMonth] = useState();
+  const [dayOfMonth, setDayOfMonth] = useState();
 
   const daysofWeek = [
     "Sunday",
@@ -32,13 +32,13 @@ const Today = () => {
     "Friday",
     "Saturday",
   ];
-  const numDayOfWeek = today.getDay();
-  const [strDayOfWeek, setStrDayOfWeek] = useState(daysofWeek[numDayOfWeek]);
+  // const numDayOfWeek = today.getDay();
+  const [strDayOfWeek, setStrDayOfWeek] = useState();
 
-  const [hour, setHour] = useState(today.getHours());
-  const [minute, setMinute] = useState(today.getMinutes());
-  const [second, setSecond] = useState(today.getSeconds());
-  const [ampm, setAmPm] = useState("");
+  const [hour, setHour] = useState();
+  const [minute, setMinute] = useState();
+  const [second, setSecond] = useState();
+  const [ampm, setAmPm] = useState();
 
   const updateDateAndTime = () => {
     const cDate = new Date();
@@ -109,15 +109,17 @@ const Today = () => {
 
   return (
     <div className="today">
-      <div className="date-time">
-        <div className="date">
-          {dayOfMonth} {strMonth} {year}
+      {second && (
+        <div className="date-time">
+          <div className="date">
+            {dayOfMonth} {strMonth} {year}
+          </div>
+          <div className="time">
+            {hour}:{minute}:{second} {ampm}
+          </div>
+          <div className="week-day">{strDayOfWeek}</div>
         </div>
-        <div className="time">
-          {hour}:{minute}:{second} {ampm}
-        </div>
-        <div className="week-day">{strDayOfWeek}</div>
-      </div>
+      )}
     </div>
   );
 };
