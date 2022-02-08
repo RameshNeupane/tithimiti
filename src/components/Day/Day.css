@@ -1,0 +1,35 @@
+.day {
+  height: 8rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0.1rem solid rgba(50, 0, 0, 0.3);
+}
+
+.date {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date .date-np,
+.date .date-en {
+  padding: 0.1rem;
+}
+
+.date .date-np {
+  font-size: 2rem;
+  /* background-color: blueviolet; */
+}
+
+.date .date-en {
+  height: 80%;
+  font-size: 1.2rem;
+  /* background-color: aquamarine; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
