@@ -28,6 +28,14 @@ const Calendar = () => {
 
   return (
     <div className="calendar">
+      <div className="cal-header">
+        <div className="header-left">Magh 2078</div>
+        <div className="header-middle">
+          <div>prev next</div>
+          <div>Syear Smonth</div>
+        </div>
+        <div className="header-right">Jan-Feb 2022</div>
+      </div>
       <div className="daynames-grid">
         <div className="dayname">Sunday</div>
         <div className="dayname">Monday</div>
@@ -48,6 +56,7 @@ const Calendar = () => {
               dateNP={day.date_np}
               dateEN={day.date_en}
               tithi={day.tithi}
+              weekday={day.week_day}
             />
           ))}
       </div>

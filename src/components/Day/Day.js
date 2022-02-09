@@ -1,20 +1,29 @@
+import { useEffect, useState } from "react";
 import "./Day.css";
 
-// const Day = ({ eventMain, extra1, extra2, dateNP, dateEN, tithi }) => {
-//   return (
-//     <>
-//       <div>dateNP: {dateNP}</div>
-//       <div>dateEN: {dateEN}</div>
-//       <div>tithi: {tithi}</div>
-//       <div>eventMain: {eventMain}</div>
-//       <div>extra1: {extra1}</div>
-//       <div>extra2 : {extra2}</div>
-//       <br />
-//     </>
-//   );
-// };
+const Day = ({ eventMain, extra1, extra2, dateNP, dateEN, tithi, weekday }) => {
+  const [weekdayObj, setWeekdayObj] = useState({
+    Sun: 1,
+    Mon: 2,
+    Tue: 3,
+    Wed: 4,
+    Thu: 5,
+    Fri: 6,
+    Sat: 7,
+  });
 
-const Day = ({ eventMain, extra1, extra2, dateNP, dateEN, tithi }) => {
+  const setDay1Pos = () => {
+    if (dateNP === "1") {
+      const day1 = document.querySelector(".day");
+      day1.style.gridColumnStart = weekdayObj[weekday];
+      setWeekdayObj((weekdayObj) => weekdayObj);
+    }
+  };
+
+  useEffect(() => {
+    setDay1Pos();
+  });
+
   return (
     <div className="day">
       <div className="event-main">{eventMain}</div>
@@ -25,6 +34,7 @@ const Day = ({ eventMain, extra1, extra2, dateNP, dateEN, tithi }) => {
       </div>
       <div className="extra">{extra1}</div>
       <div className="extra">{extra2}</div>
+      <div>{weekday}</div>
     </div>
   );
 };

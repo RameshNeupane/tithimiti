@@ -5,6 +5,48 @@
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
+  padding: 1rem;
+  border: 0.2rem solid rgba(50, 0, 0, 0.8);
+  border-radius: 1rem;
+}
+
+.cal-header {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.header-left,
+.header-right {
+  width: 25%;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  /* background-color: blue; */
+}
+
+.header-left {
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+
+.header-middle {
+  width: 50%;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* background-color: aqua; */
+}
+
+.header-right {
+  justify-content: flex-end;
+  padding-right: 1rem;
 }
 
 .daynames-grid {
@@ -16,17 +58,16 @@
 }
 
 .daynames-grid .dayname {
-  border: 0.1rem solid rgba(50, 0, 0, 0.3);
   font-size: 2rem;
   text-align: center;
+  border: 0.1rem solid rgba(50, 0, 0, 0.3);
+  border-radius: 0.5rem;
 }
 
 .calendar .day-grid {
   width: 100%;
   display: inline-grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  /* row-gap: 0.3rem;
-  column-gap: 0.3rem; */
+  grid-template-rows: auto;
   gap: 0.3rem;
 }
