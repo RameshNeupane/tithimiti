@@ -44,6 +44,20 @@
   /* background-color: aqua; */
 }
 
+.prev-today-next {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.select-date {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .header-right {
   justify-content: flex-end;
   padding-right: 1rem;

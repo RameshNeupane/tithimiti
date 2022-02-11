@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./Today.css";
 
 const Today = () => {
-  // const today = new Date();
-  const [year, setYear] = useState();
+  const today = new Date();
+  const [year, setYear] = useState(today.getFullYear());
 
   const monthList = [
     "January",
@@ -37,7 +37,9 @@ const Today = () => {
 
   const [hour, setHour] = useState();
   const [minute, setMinute] = useState();
-  const [second, setSecond] = useState();
+  const [second, setSecond] =
+    useState();
+    // async () => await addZeroPrefix(today.getSeconds())
   const [ampm, setAmPm] = useState();
 
   const updateDateAndTime = () => {
@@ -52,17 +54,25 @@ const Today = () => {
   };
   setInterval(updateDateAndTime, 1000);
 
-  const updateSecond = (cSec) => {
-    if (cSec < 10) {
-      cSec = `0${cSec}`;
+  const addZeroPrefix = (value) => {
+    if (value < 10) {
+      value = `0${value}`;
     }
+    return value;
+  };
+  const updateSecond = (cSec) => {
+    // if (cSec < 10) {
+    //   cSec = `0${cSec}`;
+    // }
+    cSec = addZeroPrefix(cSec);
     setSecond(cSec);
   };
 
   const updateMinute = (cMin) => {
-    if (cMin < 10) {
-      cMin = `0${cMin}`;
-    }
+    // if (cMin < 10) {
+    //   cMin = `0${cMin}`;
+    // }
+    cMin = addZeroPrefix(cMin);
     setMinute(cMin);
   };
 
@@ -79,9 +89,10 @@ const Today = () => {
       cHour = 12;
     }
 
-    if (cHour < 10) {
-      cHour = `0${cHour}`;
-    }
+    // if (cHour < 10) {
+    //   cHour = `0${cHour}`;
+    // }
+    cHour = addZeroPrefix(cHour);
     setAmPm(cAmPm);
     setHour(cHour);
   };
@@ -92,9 +103,10 @@ const Today = () => {
   };
 
   const updateDayOfMonth = (cDayOfMonth) => {
-    if (cDayOfMonth < 10) {
-      cDayOfMonth = `0${cDayOfMonth}`;
-    }
+    // if (cDayOfMonth < 10) {
+    //   cDayOfMonth = `0${cDayOfMonth}`;
+    // }
+    cDayOfMonth = addZeroPrefix(cDayOfMonth);
     setDayOfMonth(cDayOfMonth);
   };
 
