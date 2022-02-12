@@ -1,5 +1,5 @@
 .today {
-  height: 5rem;
+  height: 10rem;
   width: 80%;
   font-size: 3rem;
   font-weight: 500;
@@ -20,11 +20,18 @@
   padding: 1rem;
 }
 
-.date,
+.dateNpEn,
 .time,
-.week-day {
+.weekday {
   width: 33%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-weight: 600;
+}
+
+.dateNpEn,
+.weekday {
+  font-size: 2.5rem;
 }

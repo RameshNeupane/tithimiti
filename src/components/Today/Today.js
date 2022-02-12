@@ -1,3 +1,4 @@
+import NepaliDate from "nepali-date-converter";
 import { useState } from "react";
 import "./Today.css";
 
@@ -40,8 +41,17 @@ const Today = () => {
   const [second, setSecond] = useState();
   const [ampm, setAmPm] = useState();
 
-  const updateDateAndTime = () => {
-    const cDate = new Date();
+  // let todayNP = new NepaliDate();
+  // todayNP = todayNP.format("ddd DD MMMM YYYY", "np").split(" ");
+  // console.log(todayNP);
+
+  const [yearNP, setYearNP] = useState();
+  const [monthNP, setMonthNP] = useState();
+  const [dayOfMonthNP, setDayOfMonthNP] = useState();
+  const [dayOfWeekNP, setDayOfWeekNP] = useState();
+
+  const updateDateAndTime = async () => {
+    const cDate = await new Date();
     updateSecond(cDate.getSeconds());
     updateMinute(cDate.getMinutes());
     updateHour(cDate.getHours());
@@ -49,8 +59,19 @@ const Today = () => {
     updateDayOfMonth(cDate.getDate());
     updateMonth(cDate.getMonth());
     updateYear(cDate.getFullYear());
+
+    const dateNP = await new NepaliDate().format("ddd DD MMMM YYYY", "np");
+    updateDateAndTimeNP(dateNP);
   };
   setInterval(updateDateAndTime, 1000);
+
+  const updateDateAndTimeNP = (date) => {
+    date = date.split(" ");
+    setYearNP(date[3]);
+    setMonthNP(date[2]);
+    setDayOfMonthNP(date[1]);
+    setDayOfWeekNP(date[0]);
+  };
 
   const addZeroPrefix = (value) => {
     if (value < 10) {
@@ -109,13 +130,21 @@ const Today = () => {
     <div className="today">
       {second && (
         <div className="date-time">
-          <div className="date">
-            {dayOfMonth} {strMonth} {year}
+          <div className="dateNpEn">
+            <div className="dateNP">
+              {dayOfMonthNP} {monthNP} {yearNP}
+            </div>
+            <div className="dateEN">
+              {dayOfMonth} {strMonth} {year}
+            </div>
           </div>
           <div className="time">
             {hour}:{minute}:{second} {ampm}
           </div>
-          <div className="week-day">{strDayOfWeek}</div>
+          <div className="weekday">
+            <div className="weekDayNP">{dayOfWeekNP}</div>
+            <div className="weekdayEN">{strDayOfWeek}</div>
+          </div>
         </div>
       )}
     </div>

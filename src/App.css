@@ -4,10 +4,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .title {
   text-transform: uppercase;
   letter-spacing: 0.3rem;
+  font-weight: 600;
+}
+
+.source-link a {
+  text-decoration: none;
+  color: rgb(50, 0, 0);
+}
+
+.source-link a h1 {
+  margin: 1rem 0;
+  border: 0.2rem solid rgba(50, 0, 0, 0.6);
+  padding: 1rem;
+}
+
+.source-link a h1:hover {
+  border-color: rgba(50, 0, 0, 0.8);
 }

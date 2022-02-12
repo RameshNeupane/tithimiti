@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import NepaliDate from "nepali-date-converter";
+import {
+  FaAngleLeft,
+  FaAngleRight,
+  FaCalendarAlt,
+  // FaCalendarDay,
+  FaSearch,
+} from "react-icons/fa";
 import Day from "../Day/Day";
 import "./Calendar.css";
 
 const Calendar = () => {
   const [data, setData] = useState([]);
-  // const [decideGetData, setDecideGetData] = useState(false);
 
   const years = [
     1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981,
@@ -68,7 +74,6 @@ const Calendar = () => {
   const [selectedYear, setSelectedYear] = useState(year);
   const [selectedMonth, setSelectedMonth] = useState(month);
   const dateEN = new NepaliDate(year, months.indexOf(month), 18).getAD();
-  console.log(dateEN);
 
   const getPrevMonth = () => {
     if (month === "Baishakh") {
@@ -155,11 +160,6 @@ const Calendar = () => {
     });
     const data = await response.json();
     const monthArr = Object.values(data[month]);
-    // console.log(maghArr.length, typeof maghArr);
-    // console.log(maghArr);
-    // for (let i of maghArr) {
-    //   console.log(i);
-    // }
     setData([...monthArr]);
   };
 
@@ -184,17 +184,17 @@ const Calendar = () => {
         <div className="header-middle">
           <div className="prev-today-next">
             <div className="cal-prev" onClick={hanldePrev}>
-              prev
+              <FaAngleLeft />
             </div>
             <div
               className="cal-today"
               onClick={handleToday}
               title={`${currentMonth} ${currentYear}`}
             >
-              today
+              <FaCalendarAlt />
             </div>
             <div className="cal-next" onClick={handleNext}>
-              next
+              <FaAngleRight />
             </div>
           </div>
           <div className="select-date">
@@ -215,17 +215,17 @@ const Calendar = () => {
               >
                 {months.length > 0 && getMonthsDropdown()}
               </select>
-              <button type="submit">Search</button>
+              <button type="submit" className="btn-submit">
+                <FaSearch />
+              </button>
             </form>
-
-            <div></div>
           </div>
         </div>
         <div className="header-right">
           {monthMap[month]} {dateEN.year}
         </div>
       </div>
-
+      <hr />
       <div className="daynames-grid">
         {weekDayEN.length > 0 && displayWeekDay()}
       </div>
@@ -244,7 +244,6 @@ const Calendar = () => {
             />
           ))}
       </div>
-      {/* <Day /> */}
     </div>
   );
 };
