@@ -19,7 +19,7 @@ const Today = () => {
     "November",
     "December",
   ];
-  // const numMonth = today.getMonth();
+
   const [strMonth, setStrMonth] = useState();
   const [dayOfMonth, setDayOfMonth] = useState();
 
@@ -32,14 +32,12 @@ const Today = () => {
     "Friday",
     "Saturday",
   ];
-  // const numDayOfWeek = today.getDay();
+
   const [strDayOfWeek, setStrDayOfWeek] = useState();
 
   const [hour, setHour] = useState();
   const [minute, setMinute] = useState();
-  const [second, setSecond] =
-    useState();
-    // async () => await addZeroPrefix(today.getSeconds())
+  const [second, setSecond] = useState();
   const [ampm, setAmPm] = useState();
 
   const updateDateAndTime = () => {
@@ -61,17 +59,11 @@ const Today = () => {
     return value;
   };
   const updateSecond = (cSec) => {
-    // if (cSec < 10) {
-    //   cSec = `0${cSec}`;
-    // }
     cSec = addZeroPrefix(cSec);
     setSecond(cSec);
   };
 
   const updateMinute = (cMin) => {
-    // if (cMin < 10) {
-    //   cMin = `0${cMin}`;
-    // }
     cMin = addZeroPrefix(cMin);
     setMinute(cMin);
   };
@@ -89,9 +81,6 @@ const Today = () => {
       cHour = 12;
     }
 
-    // if (cHour < 10) {
-    //   cHour = `0${cHour}`;
-    // }
     cHour = addZeroPrefix(cHour);
     setAmPm(cAmPm);
     setHour(cHour);
@@ -103,9 +92,6 @@ const Today = () => {
   };
 
   const updateDayOfMonth = (cDayOfMonth) => {
-    // if (cDayOfMonth < 10) {
-    //   cDayOfMonth = `0${cDayOfMonth}`;
-    // }
     cDayOfMonth = addZeroPrefix(cDayOfMonth);
     setDayOfMonth(cDayOfMonth);
   };

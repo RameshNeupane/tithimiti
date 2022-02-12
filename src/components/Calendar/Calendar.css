@@ -51,6 +51,22 @@
   justify-content: space-around;
 }
 
+.cal-prev,
+.cal-today,
+.cal-next {
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: 0.1rem solid rgba(50, 0, 0, 0.4);
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+}
+
+.cal-prev:hover,
+.cal-today:hover,
+.cal-next:hover {
+  border: 0.1rem solid rgba(50, 0, 0, 0.6);
+}
+
 .select-date {
   width: 50%;
   display: flex;
