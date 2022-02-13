@@ -14,8 +14,10 @@ const Day = ({ eventMain, extra1, extra2, dateNP, dateEN, tithi, weekday }) => {
   };
 
   const setDay1Pos = () => {
-    const day1 = document.querySelectorAll(".day")[0];
-    day1.style.gridColumnStart = weekdayObj[weekday];
+    if (dateNP === "1") {
+      const day1 = document.querySelector(".day");
+      day1.style.gridColumnStart = weekdayObj[weekday];
+    }
   };
 
   const setTodayBackground = () => {
