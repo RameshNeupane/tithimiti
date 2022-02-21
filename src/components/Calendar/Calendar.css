@@ -53,9 +53,11 @@
   column-gap: 0.5rem;
 }
 
-.cal-prev,
+.cal-prev-year,
+.cal-prev-month,
 .cal-today,
-.cal-next {
+.cal-next-month,
+.cal-next-year {
   font-size: 2rem;
   cursor: pointer;
   display: flex;
@@ -65,9 +67,11 @@
   padding: 0.5rem;
 }
 
-.cal-prev:hover,
+.cal-prev-year:hover,
+.cal-prev-month:hover,
 .cal-today:hover,
-.cal-next:hover {
+.cal-next-month:hover,
+.cal-next-year:hover {
   background-color: rgba(50, 0, 0, 0.3);
 }
 

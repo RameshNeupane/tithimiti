@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import NepaliDate from "nepali-date-converter";
 import {
+  FaAngleDoubleLeft,
+  FaAngleDoubleRight,
   FaAngleLeft,
   FaAngleRight,
   FaCalendarAlt,
@@ -10,8 +12,6 @@ import Day from "../Day/Day";
 import "./Calendar.css";
 
 const Calendar = () => {
-  const [data, setData] = useState([]);
-
   const years = [
     2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
     2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,
@@ -70,9 +70,33 @@ const Calendar = () => {
   const [selectedYear, setSelectedYear] = useState(year);
   const [selectedMonth, setSelectedMonth] = useState(month);
   const dateEN = new NepaliDate(year, months.indexOf(month), 18).getAD();
+  // const [yearBtnDisabled, setYearBtnDisabled] = useState(false);
+
+  const [data, setData] = useState([]);
+
+  const getData = async (year, month) => {
+    const response = await fetch(`./data/yearwise/${year}.json`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    const data = await response.json();
+    const monthArr = Object.values(data[month]);
+    setData([...monthArr]);
+  };
+
+  useEffect(() => {
+    getData(year, month);
+    setSelectedYear(year);
+    setSelectedMonth(month);
+  }, [year, month]);
 
   const getPrevMonth = () => {
-    if (month === "Baishakh") {
+    if (String(year) === String(years[0]) && month === "Baishakh") {
+      setMonth(month);
+      setYear((year) => parseInt(year));
+    } else if (month === "Baishakh") {
       setMonth("Chaitra");
       setYear((year) => year - 1);
     } else {
@@ -85,7 +109,13 @@ const Calendar = () => {
   };
 
   const getNextMonth = () => {
-    if (month === "Chaitra") {
+    if (
+      String(year) === String(years[years.length - 1]) &&
+      month === "Chaitra"
+    ) {
+      setMonth(month);
+      setYear((year) => parseInt(year));
+    } else if (month === "Chaitra") {
       setMonth("Baishakh");
       setYear((year) => year + 1);
     } else {
@@ -97,7 +127,15 @@ const Calendar = () => {
     setSelectedMonth(month);
   };
 
-  const hanldePrev = () => {
+  const handlePrevYear = () => {
+    if (String(year) === String(years[0])) {
+      setYear((year) => parseInt(year));
+    } else {
+      setYear(year - 1);
+    }
+  };
+
+  const hanldePrevMonth = () => {
     getPrevMonth();
   };
 
@@ -107,8 +145,16 @@ const Calendar = () => {
     getData(currentYear, currentMonth);
   };
 
-  const handleNext = () => {
+  const handleNextMonth = () => {
     getNextMonth();
+  };
+
+  const handleNextYear = () => {
+    if (String(year) === String(years[years.length - 1])) {
+      setYear((year) => parseInt(year));
+    } else {
+      setYear(year + 1);
+    }
   };
 
   const getYearDropdown = () => {
@@ -147,29 +193,11 @@ const Calendar = () => {
     return divs;
   };
 
-  const getData = async (year, month) => {
-    const response = await fetch(`./data/yearwise/${year}.json`, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
-    const data = await response.json();
-    const monthArr = Object.values(data[month]);
-    setData([...monthArr]);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setYear(selectedYear);
     setMonth(selectedMonth);
   };
-
-  useEffect(() => {
-    getData(year, month);
-    setSelectedYear(year);
-    setSelectedMonth(month);
-  }, [year, month]);
 
   return (
     <div className="calendar">
@@ -177,11 +205,26 @@ const Calendar = () => {
         <div className="header-left">
           {month} {year}
         </div>
+
         <div className="header-middle">
           <div className="prev-today-next">
-            <div className="cal-prev" onClick={hanldePrev}>
+            <div
+              className="cal-prev-year"
+              onClick={handlePrevYear}
+              // disabled={yearBtnDisabled}
+              title="Previous Year"
+            >
+              <FaAngleDoubleLeft />
+            </div>
+
+            <div
+              className="cal-prev-month"
+              onClick={hanldePrevMonth}
+              title="Previous Month"
+            >
               <FaAngleLeft />
             </div>
+
             <div
               className="cal-today"
               onClick={handleToday}
@@ -189,10 +232,24 @@ const Calendar = () => {
             >
               <FaCalendarAlt />
             </div>
-            <div className="cal-next" onClick={handleNext}>
+
+            <div
+              className="cal-next-month"
+              onClick={handleNextMonth}
+              title="Next Month"
+            >
               <FaAngleRight />
             </div>
+
+            <div
+              className="cal-next-year"
+              onClick={handleNextYear}
+              title="Next Year"
+            >
+              <FaAngleDoubleRight />
+            </div>
           </div>
+
           <div className="select-date">
             <form action="/" method="post" onSubmit={handleSubmit}>
               <select
@@ -203,6 +260,7 @@ const Calendar = () => {
               >
                 {years.length > 0 && getYearDropdown()}
               </select>
+
               <select
                 name="month"
                 id="month"
@@ -211,20 +269,25 @@ const Calendar = () => {
               >
                 {months.length > 0 && getMonthsDropdown()}
               </select>
+
               <button type="submit" className="btn-submit">
                 <FaSearch />
               </button>
             </form>
           </div>
         </div>
+
         <div className="header-right">
           {monthMap[month]} {dateEN.year}
         </div>
       </div>
+
       <hr />
+
       <div className="daynames-grid">
         {weekDayEN.length > 0 && displayWeekDay()}
       </div>
+
       <div className="day-grid">
         {data.length > 0 &&
           data.map((day) => (

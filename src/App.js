@@ -8,8 +8,10 @@ function App() {
       <h1 className="title">
         <span className="title-np">तिथिमिती</span> | <span>tithimiti</span>
       </h1>
+
       <Today />
       <Calendar />
+
       <div className="source-link">
         <a
           rel="noreferrer"
