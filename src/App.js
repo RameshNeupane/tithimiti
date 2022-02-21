@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <h1 className="title">
-        <span className="title-np">तिथिमिती</span> | <span>tithimiti</span>
+        <span className="title-np">तिथिमिति</span> | <span>tithimiti</span>
       </h1>
 
       <Today />
