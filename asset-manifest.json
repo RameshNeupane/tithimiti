@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/tithimiti/static/css/main.67755c04.css",
-    "main.js": "/tithimiti/static/js/main.85a8ba19.js",
+    "main.js": "/tithimiti/static/js/main.7378a61a.js",
     "static/js/787.9db2ddf8.chunk.js": "/tithimiti/static/js/787.9db2ddf8.chunk.js",
     "index.html": "/tithimiti/index.html",
     "main.67755c04.css.map": "/tithimiti/static/css/main.67755c04.css.map",
-    "main.85a8ba19.js.map": "/tithimiti/static/js/main.85a8ba19.js.map",
+    "main.7378a61a.js.map": "/tithimiti/static/js/main.7378a61a.js.map",
     "787.9db2ddf8.chunk.js.map": "/tithimiti/static/js/787.9db2ddf8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.67755c04.css",
-    "static/js/main.85a8ba19.js"
+    "static/js/main.7378a61a.js"
   ]
 }
