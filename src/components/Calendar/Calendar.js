@@ -129,9 +129,9 @@ const Calendar = () => {
 
   const handlePrevYear = () => {
     if (String(year) === String(years[0])) {
-      setYear((year) => parseInt(year));
+      setYear(parseInt(year));
     } else {
-      setYear(year - 1);
+      setYear(parseInt(year) - 1);
     }
   };
 
@@ -151,9 +151,9 @@ const Calendar = () => {
 
   const handleNextYear = () => {
     if (String(year) === String(years[years.length - 1])) {
-      setYear((year) => parseInt(year));
+      setYear(parseInt(year));
     } else {
-      setYear(year + 1);
+      setYear(parseInt(year) + 1);
     }
   };
 
@@ -211,7 +211,6 @@ const Calendar = () => {
             <div
               className="cal-prev-year"
               onClick={handlePrevYear}
-              // disabled={yearBtnDisabled}
               title="Previous Year"
             >
               <FaAngleDoubleLeft />
