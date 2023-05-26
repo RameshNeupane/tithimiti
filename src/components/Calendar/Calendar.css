@@ -27,8 +27,6 @@
   height: inherit;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
-  /* background-color: blue; */
 }
 
 .header-left {
@@ -42,7 +40,6 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  /* background-color: aqua; */
 }
 
 .prev-today-next {

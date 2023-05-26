@@ -18,12 +18,15 @@
   color: rgb(50, 0, 0);
 }
 
-.source-link a h1 {
+.source-link a h2 {
   margin: 1rem 0;
   border: 0.2rem solid rgba(50, 0, 0, 0.6);
   padding: 1rem;
+  font-size: large;
+  border-radius: 5px;
 }
 
-.source-link a h1:hover {
+.source-link a h2:hover {
   border-color: rgba(50, 0, 0, 0.8);
+  background-color: rgba(50, 0, 0, 0.3);
 }

@@ -18,7 +18,7 @@ function App() {
           href="https://github.com/RameshNeupane/tithimiti"
           target="_blank"
         >
-          <h1>Source code in Github</h1>
+          <h2>Source code in Github</h2>
         </a>
       </div>
     </div>
